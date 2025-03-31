@@ -19,8 +19,8 @@
 
         <div class="form-group mb-3">
             <label for="due_date">Срок выполнения:</label>
-            <input type="date" name="due_date" id="due_date" class="form-control"
-                   value="{{ $task->due_date ? $task->due_date->format('Y-m-d') : '' }}">
+            <input type="date" class="form-control" id="due_date" name="due_date"
+       value="{{ old('due_date', $task->due_date ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : '') }}">
         </div>
 
         <div class="form-check mb-3">

@@ -23,6 +23,18 @@
                             <td>{{ $task->id }}</td>
                             <td>{{ $task->title }}</td>
                             <td>{{ $task->completed ? 'Done' : 'Pending' }}</td>
+                            <td>
+                                <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil"></i> Редактировать
+                                </a>
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Удалить задачу?')">
+                                        <i class="bi bi-trash"></i> Удалить
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
